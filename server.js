@@ -25,6 +25,18 @@ function generateShortCode() {
   return code;
 }
 
+// URL хугацаа дууссан эсэхийг шалгах функц
+function isExpired(urlData) {
+  if (!urlData.expiresAt) {
+    return false;
+  }
+
+  const today = new Date();
+  const expirationDate = new Date(urlData.expiresAt);
+
+  return today > expirationDate;
+}
+
 // Энгийн test route
 app.get("/", (req, res) => {
   res.send("URL Shortener backend is running");
@@ -59,9 +71,21 @@ app.post("/api/shorten", (req, res) => {
   });
 });
 
-// Бүх URL жагсаалтыг харах test endpoint
+// Бүх URL жагсаалтыг харах болон filter хийх endpoint
 app.get("/api/urls", (req, res) => {
-  res.json(urls);
+  const { active, expired } = req.query;
+
+  let result = urls;
+
+  if (active === "true") {
+    result = urls.filter((item) => !isExpired(item));
+  }
+
+  if (expired === "true") {
+    result = urls.filter((item) => isExpired(item));
+  }
+
+  res.json(result);
 });
 
 // Богино URL-оор original URL руу redirect хийх endpoint
@@ -76,15 +100,10 @@ app.get("/:shortCode", (req, res) => {
     });
   }
 
-  if (urlData.expiresAt) {
-    const today = new Date();
-    const expirationDate = new Date(urlData.expiresAt);
-
-    if (today > expirationDate) {
-      return res.status(410).json({
-        error: "Short URL has expired",
-      });
-    }
+  if (isExpired(urlData)) {
+    return res.status(410).json({
+      error: "Short URL has expired",
+    });
   }
 
   urlData.clickCount += 1;
