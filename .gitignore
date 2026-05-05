@@ -11,6 +11,10 @@ env/
 *.sqlite
 *.sqlite3
 
+node_modules/
+.env
+.DS_Store
+
 # Environment
 .env
 
