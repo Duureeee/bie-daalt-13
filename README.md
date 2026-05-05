@@ -1,29 +1,26 @@
-# bie-daalt-13
 # URL Shortener
 
-## Project Description
+## Төслийн тайлбар
 
-This project is a simple URL Shortener web application.
-It allows users to convert long URLs into short links.
+Энэ төсөл нь урт URL холбоосыг богино холбоос болгон хувиргах энгийн URL Shortener веб аппликейшн юм.
 
-The main goal of this project is to practice AI-assisted software construction by planning, implementing, testing, and documenting a small full-stack application.
+Хэрэглэгч урт холбоос оруулахад систем санамсаргүй богино код үүсгэж, богино холбоос буцаана. Хэрэглэгч богино холбоосоор ороход систем тухайн холбоосын үндсэн урт URL руу автоматаар шилжүүлнэ.
 
-## Main Features
+## Гол боломжууд
 
-- Create a short URL from a long URL
-- Generate a random short code
-- Redirect short URLs to original URLs
-- Count how many times each short URL is clicked
-- Support URL expiration
-- Provide a minimal frontend for user interaction
+- Урт URL-оос богино URL үүсгэх
+- Санамсаргүй богино код үүсгэх
+- Богино URL-оос үндсэн URL руу шилжүүлэх
+- Богино холбоос дээр хэдэн удаа дарсныг тоолох
+- Холбоосын дуусах хугацаа тохируулах
+- Хэрэглэгч ашиглах энгийн frontend хийх
 
-## Planned Technology Stack
+## Төлөвлөсөн технологи
 
 ### Backend
 
 - Node.js
 - Express.js
-- SQLite or JSON file storage for early development
 
 ### Frontend
 
@@ -31,14 +28,11 @@ The main goal of this project is to practice AI-assisted software construction b
 - CSS
 - JavaScript
 
-### Tools
+### Өгөгдөл хадгалах
 
-- Git
-- GitHub
-- Claude / ChatGPT for AI-assisted development
-- VS Code
+Эхний хувилбарт JSON файл эсвэл санах ой дээр түр хадгалж болно. Дараа нь шаардлагатай бол SQLite ашиглаж болно.
 
-## Folder Structure
+## Folder бүтэц
 
 ```txt
 url-shortener/
