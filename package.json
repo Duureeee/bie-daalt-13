@@ -1,23 +1,27 @@
 {
-  "name": "bie-daalt-13",
+  "name": "bie-daalt-13-url-shortener",
   "version": "1.0.0",
-  "description": "Энэ төсөл нь урт URL холбоосыг богино холбоос болгон хувиргах энгийн URL Shortener веб аппликейшн юм.",
-  "main": "index.js",
+  "description": "F.CSM311 AI-Assisted Software Construction - URL Shortener",
+  "main": "partB/src/server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node partB/src/server.js",
+    "dev": "node partB/src/server.js",
+    "test": "jest --runInBand"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Duureeee/bie-daalt-13.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Duureeee/bie-daalt-13/issues"
-  },
-  "homepage": "https://github.com/Duureeee/bie-daalt-13#readme",
+  "keywords": [
+    "url-shortener",
+    "express",
+    "sqlite",
+    "ai-assisted"
+  ],
+  "author": "altjin",
+  "license": "MIT",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "jest": "^30.0.0",
+    "supertest": "^7.1.0"
   }
 }

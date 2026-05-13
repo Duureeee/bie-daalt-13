@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: URL Shortener API
+  version: 1.0.0
+  description: REST API for creating and managing short URLs.
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/shorten:
+    post:
+      summary: Create a short URL
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - longUrl
+              properties:
+                longUrl:
+                  type: string
+                  example: https://example.com
+                expiresAt:
+                  type: string
+                  format: date-time
+                  example: 2026-12-31T23:59:59.000Z
+      responses:
+        "201":
+          description: Short URL created
+        "400":
+          description: Invalid input
+  /api/urls/{code}:
+    get:
+      summary: Get URL statistics
+      parameters:
+        - name: code
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: URL statistics
+        "404":
+          description: Short URL not found
+  /{code}:
+    get:
+      summary: Redirect to original URL
+      parameters:
+        - name: code
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "302":
+          description: Redirect to original URL
+        "404":
+          description: Short URL not found
+        "410":
+          description: Short URL expired
