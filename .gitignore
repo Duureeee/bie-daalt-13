@@ -6,3 +6,4 @@ data/*.sqlite
 npm-debug.log*
 coverage/
 .vscode/
+.vscode/
